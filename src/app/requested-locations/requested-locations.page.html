@@ -1,0 +1,47 @@
+<ion-header class="bg_transparent">
+	<ion-toolbar>
+		<ion-buttons slot="start">
+			<ion-back-button text="" icon="chevron-back-outline"></ion-back-button>
+		</ion-buttons>
+		<ion-title>
+    Requested Locations/ Leaders
+		</ion-title>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div *ngIf="draftlocations.length >0">
+  <h1>Location Requested</h1>
+  <ion-list *ngIf="draftlocations.length > 0" >
+    <ion-item *ngFor="let item of draftlocations" >
+    <div class="d-list">
+      <div class="d-item">
+        <div class="text-k"> Location Requested</div>
+        <div class="text-v">{{ item.name }}</div>
+      </div>
+      <div class="d-item">
+        <div class="text-k"> Status</div>
+        <div class="text-v">{{ item.status }}</div>
+      </div>
+    </div>
+    </ion-item>
+  </ion-list>
+</div>
+<div *ngIf="draftleaders.length >0">
+  <h1>Leader Requested</h1>
+  <ion-list *ngIf="draftleaders.length > 0" >
+    <ion-item *ngFor="let item of draftleaders" >
+    <div class="d-list">
+      <div class="d-item">
+        <div class="text-k"> Leader Requested</div>
+        <div class="text-v">{{ item.name }}</div>
+      </div>
+      <div class="d-item">
+        <div class="text-k"> Status</div>
+        <div class="text-v">{{ item.status }}</div>
+      </div>
+    </div>
+    </ion-item>
+  </ion-list>
+</div>
+  </ion-content>

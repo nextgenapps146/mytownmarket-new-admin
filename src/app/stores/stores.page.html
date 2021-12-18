@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <div class="location">
+      <div class="locality">
+       Stores
+      </div>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div class="text-4 mt-4" *ngIf="stores.length > 0">
+    Stores near you
+  </div>
+  <ion-item class="item" style="margin-left: 40px" *ngFor="let item of stores" >
+    <ion-label>
+      <div class="fw-b">{{item.name}}</div>
+      <p>{{item.address}}</p>
+    </ion-label>
+  </ion-item>
+</ion-content>

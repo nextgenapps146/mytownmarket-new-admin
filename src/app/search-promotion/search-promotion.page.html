@@ -1,0 +1,96 @@
+<!-- <ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button text="" icon="chevron-back-outline"></ion-back-button>
+        </ion-buttons>
+        <ion-title>
+            <div class="title_inner d-flex">
+                <ion-searchbar [(ngModel)]="searchitem" mode="md" class="ion-no-padding"
+                searchIcon="hide" placeholder="Search Promotions">
+               </ion-searchbar>
+                <ion-icon class="zmdi zmdi-search ion-text-start end" (click)="SearchPromotion()" ></ion-icon>
+            </div>
+        </ion-title>
+    </ion-toolbar>
+</ion-header> -->
+
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="" icon="chevron-back-outline"></ion-back-button>
+    </ion-buttons>
+    <div class="location" aria-placeholder="Select Location" (click)="changeLocation()">
+      <div class="locality">
+        <ion-searchbar [(ngModel)]="searchitem" mode="md" class="ion-no-padding"
+        searchIcon="hide" placeholder="Search Promotions">
+       </ion-searchbar>
+      </div>
+    </div>
+    <div class="right_icons" slot="end">
+      <span class="end search_icon" (click)="searchPromotion()">
+        <ion-icon name="search"></ion-icon>
+      </span>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="content">
+
+    <div class="slider2">
+      <div class="wrapper">
+        <div class="categories-wrap">
+          <div *ngFor="let item of allCategoriesList" [ngClass]="item.selected ? 'selected' : ''" (click)="selectCategory(item)" class="item">{{ item.name }}</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="promo">
+      <div class="store-name">Reliance Supercenter</div>
+      <p>Mahabalipuram Road, Beside MGM</p>
+      <div class="price">
+        <span class="reduced-p">Rs 50</span>
+        <span class="original-p">Rs 100</span>
+      </div>
+      <div class="title">
+        <div>Chicken</div>
+        <div class="qn-cd">
+          <div class="quantity">1 kg</div>
+          <div class="code">Code 100Off</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="promo">
+      <div class="store-name">Digambar Retail Store</div>
+      <p>Labour Colony, Beside Gowrayya Dabba</p>
+      <div class="price">
+        <span class="reduced-p">Rs 150</span>
+        <span class="original-p">Rs 200</span>
+      </div>
+      <div class="title">
+        <div>Sunflower Oil</div>
+        <div class="qn-cd">
+          <div class="quantity">500 grams</div>
+          <div class="code">Code 100Off</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="promo">
+      <div class="store-name">Swathi Bakery</div>
+      <p>Beside Platinum Jublee School</p>
+      <div class="price">
+        <span class="reduced-p">Rs 70</span>
+        <span class="original-p">Rs 100</span>
+      </div>
+      <div class="title">
+        <div>Eggs Puffs</div>
+        <div class="qn-cd">
+          <div class="quantity">10 Pieces</div>
+          <div class="code">Code 100Off</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>

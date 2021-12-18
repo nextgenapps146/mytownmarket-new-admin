@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "748047954314",
+    "project_id": "my-town-market-new",
+    "storage_bucket": "my-town-market-new.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:748047954314:android:2ccd558a7f541e6f60d873",
+        "android_client_info": {
+          "package_name": "mytownmarket.customer.com"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "748047954314-csl1u4tj419277qh4qjqj4ju7siccvsm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA5Iwf3RvRvGixO2PPLIjlkuyzDJ9kkpzg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "748047954314-csl1u4tj419277qh4qjqj4ju7siccvsm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

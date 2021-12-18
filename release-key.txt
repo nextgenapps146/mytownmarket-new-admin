@@ -1,0 +1,4 @@
+alias: alias_name
+password: nov2021
+
+keytool -genkey -v -keystore release.jks -keyalg RSA -storepass nov2021 -alias release -keypass nov2021 -keysize 2048 -validity 10000 -dname "cn=rishi"

@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <div class="location">
+      <div class="locality">
+        My Store
+      </div>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen="true">
+  <div class="content">
+    <div class="page_info" *ngIf="store">
+      <div></div>
+      <div>{{store?.name}}</div>
+      <div>{{store?.address}}</div>
+      <div>{{store?.contactphone}}</div>
+      <div>{{store?.about}}</div>
+      <ion-icon (click)="editStore(store)" size="large" class="edit" name="create-outline"></ion-icon>
+    </div>
+
+    <div class="text-4 mt-4">
+      <span class="flt-lt">My Promotions</span>
+      <span class="link flt-rt" (click)="addPromotion()">
+        <ion-icon name="add-circle-outline"></ion-icon>
+        <span>Add Promotion</span>
+      </span>
+    </div>
+
+    <br>
+    <ion-item *ngFor="let item of promotions">
+    <div  class="promotion" >
+      <p>Promotion : 
+        <a>{{item?.name}}</a></p>
+      <p><s>Regular Price {{item?.regularprice}}</s></p>
+      <p>Sale Price <a style="color: black; font-size: large;">{{item?.saleprice}}</a></p>
+      <p>Quantity {{item?.quantity}}</p>
+      <ion-icon (click)="editPromotion(item)" size="large" class="edit" name="create-outline"></ion-icon>
+    </div>
+    <br>
+    <br>
+  </ion-item>
+  <br>
+  </div>
+
+</ion-content>

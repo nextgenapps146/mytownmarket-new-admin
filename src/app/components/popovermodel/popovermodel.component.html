@@ -1,0 +1,33 @@
+<div id="notification-container" class="dropdown-menu" role="menu" aria-labelledby="drop3">
+
+  <section class="panel">
+ 
+      <header class="panel-heading">
+        <br/>
+        &nbsp;&nbsp;  <strong>Notifications</strong>
+      </header>
+      <ion-list *ngIf="notifications && notifications.length > 0" >
+        <ion-item *ngFor="let item of notifications" >
+          <ion-item button (click)="gotoRequestedLocation()">
+            {{item.type}} by {{item.fromname}} 
+            {{item.villagename}} {{item.name}}
+          </ion-item>
+        </ion-item>
+      </ion-list>
+      <!-- <div id="notification-list" *ngIf="notifications && notifications.length > 0" >
+        <div *ngFor="let item of notifications">
+          <div ><div class="noty-manager-list-item noty-manager-list-item-error"><div class="activity-item"><div class="activity"> <strong>{{item.type}} by</strong > {{item.fromname}} <a></a>  </div> </div></div></div>
+        </div>
+      </div> -->
+  </section>
+
+</div>
+
+<!-- <ion-list *ngIf="notifications && notifications.length > 0" >
+  <ion-item *ngFor="let item of notifications" >
+    <ion-item button (click)="gotoLocation()">
+      Add Location Requested by {{item.fromname}} for
+      {{item.villagename}}
+    </ion-item>
+  </ion-item>
+</ion-list> -->

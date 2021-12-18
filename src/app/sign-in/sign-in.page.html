@@ -1,0 +1,76 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start" (click)="dismiss()">
+      <ion-icon name="close"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- <div class="banner">
+		<div class="logo">
+			<img src="assets/images/userlogo.png">
+		</div>
+    </div> -->
+  <div class="page_info">
+    <h1>My Town Market</h1>
+    <p>
+      Everyday Deals at your everyday stores
+    </p>
+  </div>
+  <div class="form">
+    <ion-list lines="none">
+      <ion-item lines="none" *ngIf="!isOTPRequested">
+        <ion-label mode="md" position="stacked">{{"phone_number" | translate}}</ion-label>
+        <ion-grid style=grid-gap:100px;>
+          <ion-row>
+            <ion-col size='3'>
+              <ion-input mode="md" type="any" placeholder="{{'+91' | translate}}" [(ngModel)]="prefix"></ion-input>
+            </ion-col>
+            <ion-col size='9'>
+              <ion-input mode="md" type="number" placeholder="{{'enter_phone_number' | translate}}"
+                [(ngModel)]="phoneNumber"></ion-input>
+            </ion-col>
+
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+      <ion-item lines="none" *ngIf="isOTPRequested">
+        <ion-label mode="md" position="stacked">OTP</ion-label>
+        <ion-input mode="md" type="tel" placeholder="Enter OTP" [(ngModel)]="verifCode"></ion-input>
+      </ion-item>
+    </ion-list>
+  </div>
+
+  <div class='ion-center' style="position:relative;z-index:10;width:100%;margin-left:2em;margin-right:auto;">
+    <div id="recaptcha-container"></div>
+  </div>
+
+  <ion-button size="large" expand="full" class="btn" (click)="signIn()" *ngIf="!isOTPRequested">{{'continue' |
+    translate}}</ion-button>
+  <ion-button size="large" expand="full" class="btn" (click)="confirmOtp()" *ngIf="isOTPRequested && !enableResend">
+    {{"confirm_otp" | translate}}</ion-button>
+  <ion-button size="large" expand="full" class="btn" (click)="signIn()" *ngIf="isOTPRequested && enableResend">Resend
+    OTP</ion-button>
+  <p class="ion-text-center" *ngIf="!isOTPRequested">
+    We will send OTP for vefification
+  </p>
+
+  <p class="ion-text-center" *ngIf="isOTPRequested && remainingSecond > 0">
+    Resend OTP
+    <span *ngIf="remainingSecond > 0">&nbsp;in {{remainingSecond}} sec</span>
+  </p>
+</ion-content>
+
+<!-- <ion-footer class="ion-no-border">
+	<h2 class="ion-text-center">{{"or_continue_with" | translate}}</h2>
+	<ion-row>
+		<ion-col size="6">
+				<ion-button size="large" expand="full" class="btn facebook" (click)="home()">{{'facebook' | translate}}</ion-button>
+		</ion-col>
+
+		<ion-col size="6">
+				<ion-button size="large" expand="full" class="btn google" (click)="home()">{{'google' | translate}}</ion-button>
+		</ion-col>
+	</ion-row>
+</ion-footer> -->

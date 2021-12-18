@@ -1,0 +1,97 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <div class="location">
+      <div class="locality">
+        Add Store
+      </div>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="content contentSection" *ngIf="!isFormSubmitted" padding>
+    <div class="form-group">
+       
+        <div class="item">
+            <div class="label">Store Name</div>
+            <ion-input type="text" [(ngModel)]="storeModel.name" name="leader Name"></ion-input>
+        </div>
+
+        <!-- <div class="item select-item">
+          <div class="label flt-lt">City</div>
+          <ion-select  [(ngModel)]="storeModel.city" (ionChange)="setCity($event)">
+              <ion-select-option [value]="item.name" *ngFor="let item of cities">{{ item.name }}</ion-select-option>
+          </ion-select>
+      </div>
+
+      <div class="item select-item">
+        <div class="label flt-lt">locality</div>
+        <ion-select  [(ngModel)]="storeModel.locality" (ionChange)="setLocality($event)">
+            <ion-select-option [value]="item.name" *ngFor="let item of locations">{{ item.name }}</ion-select-option>
+        </ion-select>
+    </div>
+
+    
+    <div class="item">
+      <div class="label">Zipcode</div>
+      <ion-input type="number" [(ngModel)]="storeModel.zipcode"></ion-input>
+  </div> -->
+
+
+       
+
+        <div class="item select-item">
+            <div class="label flt-lt">Store Category</div>
+            <br />
+            <ion-select  [(ngModel)]="storeModel.type">
+                <ion-select-option value="retail">Retail</ion-select-option>
+                <ion-select-option value="meat">Meat</ion-select-option>
+                <ion-select-option value="food">Food</ion-select-option>
+                <ion-select-option value="grocery">Grocery</ion-select-option>
+                <ion-select-option value="restaurant">Restaurant</ion-select-option>
+              
+            </ion-select>
+        </div>
+      <br>
+       
+        <div class="item">
+            <div class="label">Store Address</div>
+            <ion-input type="text" [(ngModel)]="storeModel.address" name="leader address"></ion-input>
+        </div>
+
+        <div class="item">
+          <div class="label">Contact Phone</div>
+          <ion-input type="text" [(ngModel)]="storeModel.contactphone" name="leader address"></ion-input>
+      </div>
+
+      <div class="item">
+        <div class="label">About Store <span>- {{ 250 - storeModel.about.length }}/ 250</span> </div>
+        <!-- <ion-input  maxlength="250" type="text" [(ngModel)]="storeModel.about" name="leader address"></ion-input> -->
+        <ion-textarea maxlength="250" type="text"  [(ngModel)]="storeModel.about" rows="6" cols="20" placeholder=""></ion-textarea>
+
+
+      </div>
+    </div>
+    <br />
+    <div class="btn-wrap">
+      <ion-button expand="full" class="btn"
+      [attr.disabled]=" !storeModel.name ||
+                        !storeModel.address ||
+                        !storeModel.type"
+
+          (click)="Continue()">Continue
+      </ion-button>
+    </div>
+    <br />
+</div>
+
+<div *ngIf="isFormSubmitted">
+  <p>Thank you for adding your leader. We will review and notify you soon. </p>
+</div>
+
+
+
+</ion-content>

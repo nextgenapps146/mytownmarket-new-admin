@@ -1,0 +1,71 @@
+<ion-header class="bg_transparent">
+	<ion-toolbar>
+		<ion-buttons slot="start">
+			<ion-back-button text="" icon="chevron-back-outline"></ion-back-button>
+		</ion-buttons>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen>
+    <div class="content">
+        <div class="page_info">
+            <img [src]="partyInfo?.image" class="crop_img" width="150" height="150" />
+            <h1>{{ partyInfo?.name }}</h1>
+            <div class="text-s">{{ partyInfo?.type }}  {{ partyInfo?.subtype }} {{ partyInfo?.affiliation }}</div>
+            <div class="e-w-wrap">
+                <div class="flt-lt edu">
+                    <!-- <span class="text-k pr-1">Education</span> -->
+                    <span class="text-v">{{ partyInfo?.fullform }}</span>
+                </div>
+                <!-- <div class="flt-rt worth">
+                    <span class="text-k pr-1">Net Worth</span>
+                    <span class="text-xxl">{{ partyInfo?.networth }}</span>
+                </div> -->
+            </div>
+        </div>
+        <div class="section-l flt-lt">
+            <div class="text-4 mt-4">
+                Personal Details
+            </div>
+            <div class="d-list">
+                <div class="d-item">
+                    <div class="text-k"> founded on</div>
+                    <div class="text-v">{{ partyInfo?.date }}</div>
+                </div>
+                <div class="d-item">
+                    <div class="text-k">president</div>
+                    <div class="text-v">{{ partyInfo?.president }}</div>
+                </div>
+                <div class="d-item">
+                    <div class="text-k">Mp's</div>
+                    <div class="text-v">{{ partyInfo?.mps }}</div>
+                </div>
+                <div class="d-item">
+                    <div class="text-k">Mlc's</div>
+                    <div class="text-v">{{ partyInfo?.mlcs }}</div>
+                </div>
+                <div class="d-item">
+                    <div class="text-k">Mla's</div>
+                    <div class="text-v">{{ partyInfo?.mlas }}</div>
+                </div>
+                <div class="d-item">
+                    <div class="text-k">Overview</div>
+                    <div class="text-v">{{ partyInfo?.overview }}</div>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="section-r flt-lt">
+            <div class="text-4 mt-4">
+                Other TRS Leaders
+            </div>
+        </div> -->
+
+    </div>
+    <div style="height: 400px; background-color: #999; margin-top: 60px">
+        <div class="content">
+            <div style="padding-top: 30px">All Rights Reserved 2021</div>
+        </div>
+    </div>
+
+
+</ion-content>

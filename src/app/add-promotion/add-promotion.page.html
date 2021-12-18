@@ -1,0 +1,98 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="" icon="chevron-back-outline"></ion-back-button>
+    </ion-buttons>
+    <div class="location">
+      <div class="locality">
+        Add Promotion
+      </div>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="contentSection" *ngIf="!isFormSubmitted" padding>
+    <div class="form-group">
+      <div class="item select-item">
+        <div class="label flt-lt">Promotion Type</div>
+        <br />
+        <ion-select [(ngModel)]="promotionModel.type">
+          <ion-select-option value="1">Products or Items Promotion</ion-select-option>
+          <ion-select-option value="2">% Off on Products or Min Bills</ion-select-option>
+        </ion-select>
+      </div>
+
+      <div class="item" *ngIf="promotionModel.type">
+        <div class="label" *ngIf="promotionModel.type === '1'">
+          Product/Service Name 
+          <span class="example">(Ex: Sunflower Oil)</span>
+        </div>
+        <div class="label" *ngIf="promotionModel.type === '2'">
+          Product Name or Min Bill Amount 
+          <span class="example">(Ex: Perfumes & Cosmetics, Min Bill Above Rs 1500)</span>
+        </div>
+        <ion-input type="text" [(ngModel)]="promotionModel.name"></ion-input>
+      </div>
+
+      <div class="item" *ngIf="promotionModel.type === '1'">
+        <div class="label">
+          Quantity 
+          <span class="example">(Ex: 1Kg, 500 Grams)</span>
+        </div>
+        <ion-input type="text" [(ngModel)]="promotionModel.quantity"></ion-input>
+      </div>
+
+      <div class="item" *ngIf="promotionModel.type === '2'">
+        <div class="label">
+          Offer
+          <span class="example">(Ex: 50% Off, Upto 70% Off, Free 1 Kg Atta)</span>
+        </div>
+        <ion-input type="text" [(ngModel)]="promotionModel.offer"></ion-input>
+      </div>
+
+      <div class="item select-item">
+        <div class="label flt-lt">Promotion Category</div>
+        <br />
+        <ion-select [(ngModel)]="promotionModel.category">
+          <ion-select-option value="retail">Retail</ion-select-option>
+          <ion-select-option value="meat">Meat</ion-select-option>
+          <ion-select-option value="food">Food</ion-select-option>
+          <ion-select-option value="grocery">Grocery</ion-select-option>
+          <ion-select-option value="restaurant">Restaurant</ion-select-option>
+        </ion-select>
+      </div>
+
+      <div class="item" *ngIf="promotionModel.type === '1'">
+        <div class="label">Regular Price</div>
+        <ion-input type="text" [(ngModel)]="promotionModel.regularprice"></ion-input>
+      </div>
+
+      <div class="item" *ngIf="promotionModel.type === '1'">
+        <div class="label">Sale Price</div>
+        <ion-input type="text" [(ngModel)]="promotionModel.saleprice"></ion-input>
+      </div>
+
+      <!-- <div class="item select-item">
+        <div class="label flt-lt">locality</div>
+        <ion-select  [(ngModel)]="promotionModel.locality" (ionChange)="setLocality($event)">
+            <ion-select-option [value]="item.name" *ngFor="let item of locations">{{ item.name }}</ion-select-option>
+        </ion-select>
+    </div> -->
+    <br>
+    </div>
+    <br />
+    <div class="btn-wrap">
+      <ion-button expand="full" class="btn" [attr.disabled]="!isContinueBtnEnable()" (click)="Continue()">Continue
+      </ion-button>
+    </div>
+    <br />
+  </div>
+
+  <div *ngIf="isFormSubmitted">
+    <p>Thank you for adding your leader. We will review and notify you soon. </p>
+  </div>
+
+
+
+</ion-content>

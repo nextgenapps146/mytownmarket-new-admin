@@ -1,0 +1,77 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <div class="location">
+      <div class="locality">
+        Add Locality
+      </div>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="content contentSection" *ngIf="!isFormSubmitted" padding>
+    <div class="form-group">
+       
+      <div class="item select-item">
+        <div class="label flt-lt">Locality Entity</div>
+        <br />
+        <ion-select  [(ngModel)]="localityModel.entity">
+            <ion-select-option value="1">City</ion-select-option>
+            <ion-select-option value="2">Locality</ion-select-option>          
+        </ion-select>
+    </div>
+
+    <div class="item select-item" *ngIf="localityModel.entity === '2'">
+      <div class="label flt-lt">City</div>
+      <ion-select  [(ngModel)]="localityModel.city" (ionChange)="setCity($event)">
+          <ion-select-option [value]="item.name" *ngFor="let item of cities">{{ item.name }}</ion-select-option>
+      </ion-select>
+  </div>
+
+        <div class="item">
+            <div class="label">Locality Name</div>
+            <ion-input type="text" [(ngModel)]="localityModel.name" ></ion-input>
+        </div>
+
+        <div class="item">
+          <div class="label">Zone</div>
+          <ion-input type="text" [(ngModel)]="localityModel.zone" ></ion-input>
+      </div>
+
+      <div class="item">
+        <div class="label">Nearbylocalities <br> <span style="font-weight: 100;"> Separate with ',' </span></div>
+        <ion-input type="text" [(ngModel)]="localityModel.nearbylocalities" ></ion-input>
+    </div>
+
+    <div class="item">
+      <div class="label">Zipcode</div>
+      <ion-input type="text" [(ngModel)]="localityModel.zipcode" ></ion-input>
+  </div>
+       
+
+
+ 
+    </div>
+    <br />
+    <div class="btn-wrap">
+      <ion-button expand="full" class="btn"
+      [attr.disabled]=" !localityModel.name ||
+                        !localityModel.entity ||
+                        !localityModel.zipcode"
+
+          (click)="createCity()">Continue
+      </ion-button>
+    </div>
+    <br />
+</div>
+
+<!-- <div *ngIf="isFormSubmitted">
+  <p>Thank you for adding your leader. We will review and notify you soon. </p>
+</div> -->
+
+
+
+</ion-content>

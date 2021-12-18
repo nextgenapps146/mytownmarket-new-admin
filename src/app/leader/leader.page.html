@@ -1,0 +1,103 @@
+<ion-header class="bg_transparent">
+	<ion-toolbar>
+		<ion-buttons slot="start">
+			<ion-back-button text="" icon="chevron-back-outline"></ion-back-button>
+		</ion-buttons>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen>
+    <div class="content">
+        <div class="page_info">
+            <img [src]="leaderInfo?.image" class="crop_img" width="100" height="100" />
+            <h1>{{ leaderInfo?.name }}</h1>
+            <div class="text-s">{{ leaderInfo?.type }}  {{ leaderInfo?.subtype }} {{ leaderInfo?.affiliation }}</div>
+            <div class="e-w-wrap">
+                <div class="flt-lt edu">
+                    <span class="text-k pr-1">Education</span>
+                    <span class="text-v">{{ leaderInfo?.education }}</span>
+                </div>
+                <div class="flt-rt worth">
+                    <span class="text-k pr-1">Net Worth</span>
+                    <span class="text-xxl">{{ leaderInfo?.networth }}</span>
+                </div>
+            </div>
+        </div>
+        <div class="section-l flt-lt">
+            <div class="text-4 mt-4">
+                Personal Details
+            </div>
+            <div class="d-list">
+                <div class="d-item">
+                    <div class="text-k">Date of birth</div>
+                    <div class="text-v">{{ leaderInfo?.dob }}</div>
+                </div>
+                <div class="d-item">
+                    <div class="text-k">Caste</div>
+                    <div class="text-v">{{ leaderInfo?.caste }}{{ leaderInfo?.subcaste }}</div>
+                </div>
+                <div class="d-item">
+                    <div class="text-k">Email</div>
+                    <div class="text-v">{{ leaderInfo?.email }}</div>
+                </div>
+                <div class="d-item">
+                    <div class="text-k">Address</div>
+                    <div class="text-v">{{ leaderInfo?.streetaddress }}</div>
+                </div>
+                <div class="d-item">
+                    <div class="text-k">Phone</div>
+                    <div class="text-v">{{ leaderInfo?.phonenumber }}</div>
+                </div>
+            </div>
+        </div>
+        <div class="section-r flt-lt">
+            <div class="text-4 mt-4">
+                Other TRS Leaders
+            </div>
+        </div>
+
+
+        <!-- <div class="items_container">
+            <h2>Categories</h2>
+            <div class="category_row" *ngIf="categoryInfo">
+                <div class="category" *ngFor="let category of categoryInfo"
+                    (click)="showProductsFromCategory(category.id, category.name)">
+                    <div class="img_box center_img">
+                        <img [src]="category.image" class="crop_img" />
+                    </div>
+                    <div class="text-6">{{ category.name }}</div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="items_container">
+            <h2>Popular Products</h2>
+            <div class="items_row">
+                <div class="item" *ngFor="let product of popularProducts">
+                    <div class="item_img center_img">
+                        <img [src]="product.image" class="crop_img" />
+                    </div>
+                    <div class="item_details">
+                        <h3>{{ product.name }}</h3>
+                        <h4>{{ product.weight }}</h4>
+                        <h5 class="d-flex">
+                            <span class="price">{{ product.saleprice | currency: 'INR'}}</span>
+                            <div class="fixed"></div>
+                            <app-add-item #addItem source="product" [item]="product" (addItemEvent)="onItemAdd($event)">
+                            </app-add-item>
+                        </h5>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+
+    </div>
+    <div style="height: 400px; background-color: #999; margin-top: 60px">
+        <div class="content">
+            <div style="padding-top: 30px">All Rights Reserved 2021</div>
+        </div>
+    </div>
+
+
+</ion-content>

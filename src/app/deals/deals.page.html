@@ -1,0 +1,181 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <div class="location" aria-placeholder="Select Location" (click)="changeLocation()">
+      <div class="locality">
+        <span *ngIf="locationDetails">{{ locationDetails.name }}</span>
+        <span *ngIf="!locationDetails">Select Location</span>
+      </div>
+      <ion-icon name="arrow-down"></ion-icon>
+    </div>
+    <div class="right_icons" slot="end">
+      <span class="end search_icon" (click)="searchPromotion()">
+        <ion-icon name="search"></ion-icon>
+      </span>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="content">
+    <div class="page_info">
+      <div>My Town</div>
+      <div>Market</div>
+      <div>Everyday Deals at your everyday stores</div>
+      <div class="location-btn" *ngIf="!locationDetails">
+        <ion-button size="large" (click)="changeLocation()" expand="full" class="btn">
+          Select Location
+        </ion-button>
+      </div>
+      <div class="half-circle"></div>
+    </div>
+
+    <div class="text-4 mt-4" *ngIf="promotions.length > 0">
+      Deals in your area
+    </div>
+
+    <div class="slider">
+      <div class="wrapper">
+        <div class="main">
+          <div class="base">
+            <div class="roller">
+              <div class="item"></div>
+              <div class="item"></div>
+              <div class="item"></div>
+              <div class="item"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-4 mt-4" *ngIf="promotions.length > 0">
+      Stores near you
+    </div>
+    <ion-item class="item" style="margin-left: 40px">
+      <ion-label>
+        <div class="fw-b">Reliance Supercenter</div>
+        <p>Mahabalipuram Road, Beside MGM</p>
+      </ion-label>
+    </ion-item>
+    <ion-item class="item" style="margin-left: 40px">
+      <ion-label>
+        <div class="fw-b">Chandana Bakery</div>
+        <p>Narsampet Road, Opposite Platinum Jublee School</p>
+      </ion-label>
+    </ion-item>
+    <ion-item class="item" style="margin-left: 40px">
+      <ion-label>
+        <div class="fw-b">Riaz Chicken Center</div>
+        <p>100 Feet Road, Labour Colony</p>
+      </ion-label>
+    </ion-item>
+
+    <div class="text-4 mt-4" *ngIf="promotions.length > 0">
+      Categories
+    </div>
+
+    <div class="categories-wrap">
+      <div class="item">Grocery</div>
+      <div class="item">Meat</div>
+      <div class="item">Fruits & Vegetables</div>
+      <div class="item">Milk</div>
+      <div class="item">Eggs</div>
+      <div class="item">Bakery</div>
+      <div class="item">Chiken</div>
+      <div class="item">Mutton</div>
+    </div>
+
+    <div class="text-4 mt-4" *ngIf="promotions.length > 0">
+      Today's Hot Deals in Store
+    </div>
+
+    <div class="promo">
+      <div class="store-name">Reliance Supercenter</div>
+      <p>Mahabalipuram Road, Beside MGM</p>
+      <div class="price">
+        <span class="reduced-p">Rs 50</span>
+        <span class="original-p">Rs 100</span>
+      </div>
+      <div class="title">
+        <span>Chicken</span>
+        <span class="quantity">1 kg</span>
+        <span class="code">Code 100Off</span>
+      </div>
+    </div>
+
+    <div class="promo">
+      <div class="store-name">Digambar Retail Store</div>
+      <p>Labour Colony, Beside Gowrayya Dabba</p>
+      <div class="price">
+        <span class="reduced-p">Rs 150</span>
+        <span class="original-p">Rs 200</span>
+      </div>
+      <div class="title">
+        <span>Sunflower Oil</span>
+        <span class="quantity">500 grams</span>
+        <span class="code">Code 100Off</span>
+      </div>
+    </div>
+
+    <div class="promo">
+      <div class="store-name">Swathi Bakery</div>
+      <p>Beside Platinum Jublee School</p>
+      <div class="price">
+        <span class="reduced-p">Rs 70</span>
+        <span class="original-p">Rs 100</span>
+      </div>
+      <div class="title">
+        <span>Eggs Puffs</span>
+        <span class="quantity">10 Pieces</span>
+        <span class="code">Code 100Off</span>
+      </div>
+    </div>
+
+    <div class="promo">
+      <div class="store-name">Swathi Bakery</div>
+      <p>Beside Platinum Jublee School</p>
+      <div class="off">
+        Eggs Puffs
+        <span class="quantity">10 Pieces</span>
+      </div>
+      <div class="code-btn">Get Code</div>
+    </div>
+
+    <div class="" *ngIf="promotions.length > 0">
+      <div class="item" (click)="goToShop(store)" *ngFor="let item of promotions">
+          <div class="text-4">{{ item.storename }}</div>
+          <!-- <div class="text-5">{{ item.storeaddress }}</div> -->
+          <h2>{{ item.name }}</h2>
+          <p> Price <s>{{item?.regularprice}}</s> &nbsp;&nbsp; <a
+            style="color: black; font-size: large;">{{item?.saleprice}}</a> </p>
+          <p>Quantity {{item?.quantity}}</p>
+      </div>
+    </div>
+
+    <div class="footer">
+      
+    <div class="text-4 mt-4" *ngIf="promotions.length > 0">
+      About us
+    </div>
+    <div class="free-text">My Town Market is a service that encourages its users to shop in store by
+      presenting them with some irresistable and amazing deals online. This platform is 
+      a hyper local marketplace where local shops can create their ads which they can choose
+      to either run in their local area or other areas. We have deals in a lot of different categores
+      some of which include Groceries, Meat, Food, Clothing. My Town Market also lists
+      deals in the service industry like Appliance Repair, Plumbers, Carpenters,
+      AC Service & Repair, Salon for Men & Women, etc.
+    </div>
+
+    <div class="text-4 mt-4" *ngIf="promotions.length > 0">
+      Avialble Cities & Localities
+    </div>
+    <div class="free-text">Warangal - Mills Colony, Labour Colony, Christian Colony</div>
+
+    </div>
+
+
+  </div>
+</ion-content>

@@ -1,0 +1,272 @@
+<ion-header class="bg_transparent">
+	<ion-toolbar>
+		<ion-buttons slot="start">
+			<ion-back-button text="" icon="chevron-back-outline"></ion-back-button>
+		</ion-buttons>
+		<ion-title>
+			Add Leader
+		</ion-title>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content class="bg_color">
+  <!-- <div class="page_info">
+      <h2>Add Leader</h2>
+  </div> -->
+  <div class="contentSection" *ngIf="!isFormSubmitted" padding>
+      <div class="list">
+          <br />
+
+          <div class="item select-item">
+            <div class="label flt-lt">State</div>
+            <ion-select  [(ngModel)]="leaderModel.state" (ionChange)="setState($event)">
+                <ion-select-option [value]="state.name" *ngFor="let state of states">{{ state.name }}
+                </ion-select-option>
+            </ion-select>
+        </div>
+
+        <br>
+        <div class="item select-item">
+            <div class="label flt-lt">District</div>
+            <ion-select  [(ngModel)]="leaderModel.district" (ionChange)="setDistrict($event)">
+                <ion-select-option [value]="district.name" *ngFor="let district of districts">{{ district.name }}
+                </ion-select-option>
+            </ion-select>
+        </div>
+
+        <div class="item select-item">
+            <div class="label flt-lt">Mandal</div>
+            <ion-select [(ngModel)]="leaderModel.mandal" (ionChange)="setMandal($event)">
+                <ion-select-option [value]="mandal.name" *ngFor="let mandal of mandals">{{ mandal.name }}
+                </ion-select-option>
+            </ion-select>
+        </div>
+
+        <div class="item select-item">
+            <div class="label flt-lt">Village/ city</div>
+            <ion-select  [(ngModel)]="leaderModel.village">
+                <ion-select-option [value]="village.name" *ngFor="let village of villages">{{ village.name }}
+                </ion-select-option>
+            </ion-select>
+        </div>
+
+          <div class="item">
+              <div class="label">Leader Name</div>
+              <ion-input type="text" [(ngModel)]="leaderModel.name" name="leader Name"></ion-input>
+          </div>
+
+          <div class="item">
+              <div class="label">Data of birth</div>
+              <ion-input type="text" [(ngModel)]="leaderModel.dob" name="dob"></ion-input>
+          </div>
+
+          <div class="item">
+              <div class="label">Caste</div>
+              <ion-input type="text" [(ngModel)]="leaderModel.caste" name="caste"></ion-input>
+          </div>
+
+          <div class="item">
+              <div class="label">Sub-Caste</div>
+              <ion-input type="text" [(ngModel)]="leaderModel.subcaste" name="subcaste"></ion-input>
+          </div>
+
+          <div class="item">
+              <div class="label">email</div>
+              <ion-input type="text" [(ngModel)]="leaderModel.email" name="email"></ion-input>
+          </div>
+
+          <div class="item">
+              <div class="label">net worth</div>
+              <ion-input type="text" [(ngModel)]="leaderModel.networth" name="networth"></ion-input>
+          </div>
+
+          <div class="item">
+              <div class="label">phone number</div>
+              <ion-input type="text" [(ngModel)]="leaderModel.phonenumber" name="phonenumber"></ion-input>
+          </div>
+
+          <div class="item">
+              <div class="label">education</div>
+              <ion-input type="text" [(ngModel)]="leaderModel.education" name="education"></ion-input>
+          </div>
+
+
+
+          <div class="item select-item">
+              <div class="label flt-lt">Grade/level:</div>
+              <br />
+              <p>level - 1 (prime minister, predent, home minister, all minister) <br>
+                  level - 2 (state cheif minister, state ministers)<br>                    
+                  level - 3(MP/ MLA/ district)<br>
+                  level - 101 (govt offices all india)</p>
+              <ion-select  [(ngModel)]="leaderModel.level">
+                  <ion-select-option value="level1">Level-1</ion-select-option>
+                  <ion-select-option value="level2">Level-2</ion-select-option>
+                  <ion-select-option value="level3">Level-3</ion-select-option>
+                  <ion-select-option value="level101">Level-101</ion-select-option>
+                  <ion-select-option value="level102">Level-102</ion-select-option>
+                  <ion-select-option value="level103">Level-103</ion-select-option>
+              </ion-select>
+          </div>
+        <br>
+         
+
+
+          <!-- <div class="item select-item">
+              <div class="label flt-lt">Locality</div>
+              <ion-select class="flt-rt" [(ngModel)]="leaderModel.locality" (ionChange)="setLocality($event)">
+                  <ion-select-option [value]="locality.name" *ngFor="let locality of localities">{{
+                      locality.locality }}</ion-select-option>
+              </ion-select>
+          </div> -->
+
+          <div class="item">
+              <div class="label">Street Address</div>
+              <ion-input type="text" [(ngModel)]="leaderModel.streetaddress" name="leader address"></ion-input>
+          </div>
+
+          
+
+          <div class="item">
+              <div class="label">
+                  Enter or paste image url of the leader (logo / leader picture)
+              </div>
+              <img class="image-edit" [src]="leaderModel.image" *ngIf="leaderModel.image" />
+              <ion-input class="width80" type="text" [(ngModel)]="leaderModel.image" name="leader Logo"></ion-input>
+          </div>
+          <div class="item">
+              <div class="label">Designation</div>
+              <ion-input type="text" [(ngModel)]="leaderModel.designation" name="designation"></ion-input>
+          </div>
+
+
+          <!-- <div class="item select-item">
+              <div class="label flt-lt">leader Type / Designation</div>
+              <ion-select class="flt-rt" [(ngModel)]="leaderModel.type">
+                  <ion-select-option value="MLA">MLA</ion-select-option>
+                  <ion-select-option value="MP">MP</ion-select-option>
+                  <ion-select-option value="policestation">Police Station</ion-select-option>
+                  <ion-select-option value="hospital">Hospital</ion-select-option>
+                  <ion-select-option value="Office">Office</ion-select-option>
+                  <ion-select-option value="collector">Collector</ion-select-option>
+                  <ion-select-option value="additionalcollector">Additional Collector</ion-select-option>
+                  <ion-select-option value="commissioner">Commissioner</ion-select-option>
+              </ion-select>
+          </div> -->
+
+          <div class="item">
+              <div class="label">Sub Type / Constituency</div>
+              <ion-input type="text" [(ngModel)]="leaderModel.subtype" name="Sub Type"></ion-input>
+          </div>
+          
+
+          <div class="item">
+              <div class="label">Affilations / Belongs To</div>
+              <ion-input type="text" [(ngModel)]="leaderModel.affiliation" name="Affilations"></ion-input>
+          </div>
+
+          <!-- <div class="item select-item">
+              <div class="label flt-lt">What is the business category?</div>
+              <ion-select [(ngModel)]="leaderModel.bizcat">
+                  <ion-select-option [value]="bizcat.name" *ngFor="let bizcat of bizCategories">{{ bizcat.name }}
+                  </ion-select-option>
+              </ion-select>
+          </div> -->
+
+          
+
+          <br />
+          <!-- <div class="header">Pickup/Delivery Options</div>
+          <div class="item radio-item">
+              <div class="label flt-lt">
+                  Do you offer pickup services for your products?
+              </div>
+              <ion-toggle class="flt-rt" [(ngModel)]="leaderModel.iscurbsidepickup"></ion-toggle>
+          </div>
+          <div class="item radio-item">
+              <div class="label flt-lt">
+                  Do you offer delivery services for your products?
+              </div>
+              <ion-toggle class="flt-rt" [(ngModel)]="leaderModel.isdelivery"></ion-toggle>
+          </div>
+          <div class="item radio-item" *ngIf="leaderModel.isdelivery">
+              <div class="label flt-lt">Is delivery free?</div>
+              <ion-select class="flt-rt" [(ngModel)]="leaderModel.freedelivery">
+                  <ion-select-option value="Free">Free</ion-select-option>
+                  <ion-select-option value="Orders over 250 INR">Orders over 250 INR</ion-select-option>
+                  <ion-select-option value="Orders over 350 INR">Orders over 350 INR</ion-select-option>
+                  <ion-select-option value="Orders over 450 INR">Orders over 450 INR</ion-select-option>
+                  <ion-select-option value="Orders over 550 INR">Orders over 550 INR</ion-select-option>
+                  <ion-select-option value="Orders over 650 INR">Orders over 650 INR</ion-select-option>
+                  <ion-select-option value="Orders over 750 INR">Orders over 750 INR</ion-select-option>
+              </ion-select>
+          </div>
+
+          <div class="item radio-item" *ngIf="leaderModel.isdelivery">
+              <div class="label flt-lt">Estimated delivery</div>
+              <ion-select class="flt-rt" [(ngModel)]="leaderModel.deliveryduration">
+                  <ion-select-option value="Every 1 hour">Every 1 hour</ion-select-option>
+                  <ion-select-option value="Every 2 hours">Every 2 hours</ion-select-option>
+                  <ion-select-option value="Every 3 hours">Every 3 hours</ion-select-option>
+                  <ion-select-option value="Every 4 hours">Every 4 hours</ion-select-option>
+                  <ion-select-option value="Every 5 hours">Every 5 hours</ion-select-option>
+                  <ion-select-option value="Every 6 hours">Every 6 hours</ion-select-option>
+                  <ion-select-option value="Every 12 hours">Every 12 hours</ion-select-option>
+                  <ion-select-option value="Every 1 day">Every 1 day</ion-select-option>
+                  <ion-select-option value="Every 2 days">Every 2 days</ion-select-option>
+                  <ion-select-option value="Every 3 days">Every 3 days</ion-select-option>
+                  <ion-select-option value="Every 1 week">Every 1 week</ion-select-option>
+              </ion-select>
+          </div>
+
+          <br />
+          <div class="header">Payment Options</div>
+          <div class="item radio-item">
+              <div class="label flt-lt">
+                  Can the customers pay for your products online?
+              </div>
+              <ion-toggle class="flt-rt" [(ngModel)]="leaderModel.ispayonline"></ion-toggle>
+          </div>
+          <div class="item radio-item">
+              <div class="label flt-lt">
+                  Can your customers place orders without paying for them online. (Only
+                  pick this option if you know the customer)
+              </div>
+              <ion-toggle class="flt-rt" [(ngModel)]="leaderModel.iscredit"></ion-toggle>
+          </div> -->
+      </div>
+      <br />
+      <ion-button expand="full" color="primary"
+      [attr.disabled]="  !leaderModel.village ||
+                        !leaderModel.mandal ||
+                        !leaderModel.district ||
+                        !leaderModel.state ||
+                         !leaderModel.name ||
+                         !leaderModel.dob ||
+                         !leaderModel.subcaste ||
+                         !leaderModel.caste ||
+                        !leaderModel.email ||
+                        !leaderModel.networth ||
+                        !leaderModel.phonenumber ||
+                        !leaderModel.education ||
+                        !leaderModel.level ||
+                        !leaderModel.streetaddress ||
+                        !leaderModel.image ||
+                        !leaderModel.designation ||
+                        !leaderModel.subtype ||
+                        !leaderModel.affiliation
+                     "
+          (click)="Continue()">Continue
+      </ion-button>
+      <br />
+  </div>
+<!-- 
+  <div *ngIf="isFormSubmitted">
+    <p>Thank you for adding your leader. We will review and notify you soon. </p>
+</div> -->
+
+</ion-content>
+
+<!-- 
+[attr.disabled]="!leaderModel.name || !leaderModel.image"
+[attr.disabled]="!leaderModel.name || !leaderModel.dob || !leaderModel.caste " -->

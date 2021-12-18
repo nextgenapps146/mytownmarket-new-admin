@@ -1,0 +1,74 @@
+<ion-header class="bg_transparent">
+	<ion-toolbar>
+		<ion-buttons slot="start">
+			<ion-back-button text="" icon="chevron-back-outline"></ion-back-button>
+		</ion-buttons>
+		<ion-title>
+			Add Location
+		</ion-title>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+    <div class="contentSection" *ngIf="!isFormSubmitted"  padding>
+        <!-- <h2 style="margin-left: 45%; font-weight: bold;">Request Your location</h2> -->
+        <div class="list">
+            <br />
+            <br />
+<!-- 
+            <div class="item select-item">
+                <div class="label flt-lt">Entity</div>
+                <br />
+                <ion-select  [(ngModel)]="cityModel.entity">
+                    <ion-select-option value="state">State</ion-select-option>
+                    <ion-select-option value="district">District</ion-select-option>
+                    <ion-select-option value="city">City</ion-select-option>
+                    <ion-select-option value="mandal">Mandal</ion-select-option>
+                    <ion-select-option value="village">Village</ion-select-option>
+                </ion-select>
+            </div> -->
+            <br />
+            <div class="item">
+                <div class="label">Village Name</div>
+                <ion-input type="text" [(ngModel)]="cityModel.name" name="Name"></ion-input>
+            </div>
+
+            <div class="item">
+                <div class="label">Mandal</div>
+                <ion-input type="text" [(ngModel)]="cityModel.mandal" name="Mandal"></ion-input>
+            </div>
+
+            <div class="item">
+                <div class="label">District</div>
+                <ion-input type="text" [(ngModel)]="cityModel.district" name="District"></ion-input>
+            </div>
+            
+            <div class="item">
+                <div class="label">State name</div>
+                <ion-input type="text" [(ngModel)]="cityModel.state" name="State"></ion-input>
+            </div>
+
+            <div class="item">
+                <div class="label">Country name</div>
+                <ion-input type="text" [(ngModel)]="cityModel.country" name="Country"></ion-input>
+            </div>
+
+        </div> 
+        <br />
+       
+        <ion-button expand="full" color="primary"
+        [attr.disabled]="!cityModel.name ||
+                         !cityModel.mandal ||
+                         !cityModel.district ||
+                         !cityModel.state ||
+                         !cityModel.country "
+            (click)="Continue()">Continue
+        </ion-button>
+        <br />
+    </div>
+
+    <div *ngIf="isFormSubmitted">
+        <p>Thank you for adding your location. We will review and notify you soon. </p>
+    </div>
+</ion-content>

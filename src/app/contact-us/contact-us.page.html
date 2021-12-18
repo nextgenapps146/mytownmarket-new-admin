@@ -1,0 +1,59 @@
+<ion-header>
+	<ion-toolbar>
+		<ion-buttons slot="start">
+			<ion-menu-button></ion-menu-button>
+      <div class="location">
+        <div class="locality">
+         Contact Us
+        </div>
+      </div>
+		</ion-buttons>
+	</ion-toolbar>
+</ion-header>
+<ion-content>
+    <div class="page_info">
+        <h2>Contact us</h2>
+    </div>
+	<div class="banner">
+		<div class="logo">
+			<img src="assets/images/logo.png">
+		</div>
+	</div>
+	<div class="form">
+		<p> Let us know your feedback<br>queries or issue regarding<br>app or features</p>
+		<ion-list lines="none">
+
+			<ion-item lines="none">
+				<ion-label mode="md" position="stacked">Subject</ion-label>
+				<ion-input mode="md" [(ngModel)]="contactModel.subject" type="name" placeholder="enter subject"></ion-input>
+			</ion-item>
+
+
+			<ion-item lines="none">
+				<ion-label mode="md" position="stacked">Full Name</ion-label>
+				<ion-input mode="md" [(ngModel)]="contactModel.name" type="name" placeholder="enter full name"></ion-input>
+			</ion-item>
+			<ion-item lines="none">
+				<ion-label mode="md" position="stacked">Phone Number</ion-label>
+				<ion-input mode="md" [(ngModel)]="contactModel.phonenumber" type="text" placeholder="enter phone number" ></ion-input>
+			</ion-item>
+
+			<ion-item lines="none">
+				<ion-label mode="md" position="stacked">Email</ion-label>
+				<ion-input mode="md" [(ngModel)]="contactModel.email" type="text" placeholder="enter email" ></ion-input>
+			</ion-item>
+
+			<ion-item lines="none">
+				<ion-label mode="md" position="stacked">Your Feedback</ion-label>
+				<ion-textarea [(ngModel)]="contactModel.message" rows="3" mode="md" type="text" placeholder="enter your message"></ion-textarea>
+			</ion-item>
+
+		
+		</ion-list>
+	</div>
+</ion-content>
+<ion-footer class="ion-no-border">
+	<ion-button  (click)="Continue()" size="large" shape="full" class="btn">
+		Submit
+	</ion-button>
+</ion-footer>

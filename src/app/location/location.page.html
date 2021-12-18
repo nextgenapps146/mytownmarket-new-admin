@@ -1,0 +1,69 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button text="" icon="chevron-back-outline"></ion-back-button>
+        </ion-buttons>
+        <ion-title>
+            <div class="title_inner d-flex">
+                <ion-searchbar mode="md" class="ion-no-padding" searchIcon="hide" (keyup)="updateLocationList($event)"
+                    placeholder="Search your town/city/district"></ion-searchbar>
+                <ion-icon class="zmdi zmdi-search ion-text-start end"></ion-icon>
+            </div>
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <div style="padding: 0 24px">
+        <ion-item class="item" (click)="confirmLocation(location)" *ngFor="let location of locationsList">
+            <ion-label>
+                <h2 style="font-weight: bold">{{ location.name }}</h2>
+            </ion-label>
+        </ion-item>
+    </div>
+    <!-- <ion-card>
+    <div class="form">
+      <ion-list lines="none">
+        <ion-item lines="none">
+          <ion-label mode="md" position="stacked">Town / City / Village / Mandal / District</ion-label>
+          <ion-select
+            name="city"
+            placeholder="Select One"
+            interface="popover"
+            [(ngModel)]="selectedLocation"
+            (ionChange)="setLocation()"
+          >
+            <ion-select-option [value]="item" *ngFor="let item of locations"
+              >{{ item }}</ion-select-option
+            >
+          </ion-select>
+        </ion-item> -->
+    <!-- <ion-item lines="none">
+          <ion-label mode="md" position="stacked">Locality</ion-label>
+          <ion-select
+            name="locality"
+            placeholder="Select One"
+            [(ngModel)]="selectedLocality"
+            okText="Okay">
+            <ion-select-option
+              [value]="locality" *ngFor="let locality of localities">{{ locality }}</ion-select-option>
+          </ion-select>
+        </ion-item> -->
+    <!-- </ion-list>
+      <ion-button
+        size="large"
+        expand="full"
+        class="btn"
+        (click)="confirmLocation()"
+        >{{'save' | translate}}</ion-button
+      >
+    </div>
+  </ion-card> -->
+  <!-- <ion-button
+        size="large"
+        expand="full"
+        class="btn"
+        (click)="addlocation()"
+        >Add Location </ion-button
+      > -->
+</ion-content>

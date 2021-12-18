@@ -1,0 +1,333 @@
+<ion-header *ngIf="locationDetails">
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <div class="location">
+            <div (click)="changeLocation()">
+                <div class="locality">
+                    {{ locationDetails.name }}
+                    <ion-icon name="arrow-down"></ion-icon>
+                </div>
+            </div>
+        </div>
+        <div class="right_icons" slot="end">
+            <span class="end search_icon" (click)="search()">
+                <ion-icon name="search"></ion-icon>
+            </span>
+            <span class="end"(click)="_popOver($event)" 
+            expand="block" shape="round">
+              <ion-icon name="notifications"></ion-icon>
+              <ion-badge  *ngIf="reddot"  color="accent" >.</ion-badge>
+            </span>
+
+            <!-- <span class="end" (click)="show_notifications()" *ngIf="isLoggedIn">
+                <ion-icon name="notifications"></ion-icon>
+                <ion-badge *ngIf="newNotificationCount > 0">{{ newNotificationCount }}</ion-badge>
+            </span> -->
+        </div>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen *ngIf="locationDetails">
+    <div class="content">
+        <div class="page_info">
+            <h1>{{ locationDetails.name }}</h1>
+            <div class="location-lists">
+                <a (click)="goToListPage('mandals')">
+                <span>Mandals (12)</span>
+                </a>
+                <span>Villages (223)</span>
+            </div>
+        </div>
+
+        <div class="text-4 mt-4" *ngIf="visitedStores.length > 0">
+            Recently Visited
+        </div>
+        <div class="" *ngIf="visitedStores.length > 0">
+            <div class="item" (click)="goToShop(store)" *ngFor="let store of visitedStores">
+                <div class="text-4">{{ store.name }}</div>
+                <div class="text-5">{{ store.streetaddress }}</div>
+            </div>
+        </div>
+
+        <span *ngIf="leaders.length > 0">
+            <div class="text-4 mt-4">Peoples Representatives</div>
+            <div class="">
+                <ion-item class="item" (click)="goToLeaderDetails(item)" *ngFor="let item of leaders">
+                    <ion-avatar slot="start">
+                        <img [src]="item.image" class="crop_img" />
+                    </ion-avatar>
+                    <ion-label>
+                        <h2 style="font-weight: bold">{{ item.name }}</h2>
+                        <h3>{{ item.type }} {{ item.subtype }} {{ item.affiliation }}</h3>
+                    </ion-label>
+                </ion-item>
+            </div>
+        </span>
+
+        <span *ngIf="govtofficials.length > 0">
+            <div class="text-4 mt-4">Government Servants</div>
+            <div class="">
+                <ion-item class="item" (click)="goToShop(store)" *ngFor="let store of govtofficials">
+                    <ion-avatar slot="start">
+                        <img [src]="store.image" class="crop_img" />
+                    </ion-avatar>
+                    <ion-label>
+                        <h2 style="font-weight: bold">{{ store.name }}</h2>
+                        <h3>{{ store.type }} {{ store.subtype }} {{ store.affiliation }}</h3>
+                    </ion-label>
+                    <span class="optns" *ngIf="store.isdelivery">Delivery</span>
+                    <span class="optns" *ngIf="store.iscurbsidepickup">Pickup</span>
+                </ion-item>
+            </div>
+        </span>
+
+        <span *ngIf="parties.length > 0">
+            <div class="text-4 mt-4">Political Parties</div>
+            <div class="">
+                <ion-item class="item" (click)="goToPartyDetails(item)" *ngFor="let item of parties">
+                    <ion-avatar slot="start">
+                        <img [src]="item.image" class="crop_img" />
+                    </ion-avatar>
+                    <ion-label>
+                        <h2 style="font-weight: bold">{{item.name}}</h2>
+                        <h3>MLAs ({{item.mlas}}) MLCs ({{item.mlcs}}) MPs ({{item.mps}})</h3>
+                    </ion-label>
+                </ion-item>
+            </div>
+        </span>
+
+        <span *ngIf="officials.length > 0">
+            <div class="text-4 mt-4">Events</div>
+            <div class="">
+                <ion-item class="item"  style="--border-color: #fff">
+                    <ion-avatar slot="start">
+                        <img src="https://iso.500px.com/wp-content/uploads/2016/03/stock-photo-142984111.jpg" class="crop_img" />
+                    </ion-avatar>
+                    <ion-label>
+                        <span class="text-5">THURSDAY, JUL 29 AT 7PM</span>
+                        <h2 style="font-weight: bold">Deer Lightining Festival</h2>
+                        <h3>121 N River St, Montgomery, IL 60538-1315, United States</h3>
+                    </ion-label>
+                </ion-item>
+
+                <ion-item class="item"  style="--border-color: #fff">
+                    <ion-avatar slot="start">
+                        <img src="http://media.pbseducation.org/craft.prod/assets/_1200x671_crop_center-center_75/Engaging-Young-People-in-Politics.png" class="crop_img" />
+                    </ion-avatar>
+                    <ion-label>
+                        <span class="text-5">TOMORROW, 2PM</span>
+                        <h2 style="font-weight: bold">Political Party Rally</h2>
+                        <h3>Parade Grounds</h3>
+                    </ion-label>
+                </ion-item>
+
+                <ion-item class="item"  style="--border-color: #fff">
+                    <ion-avatar slot="start">
+                        <img src="https://galined.com/wp-content/uploads/2017/06/Music.jpg" class="crop_img" />
+                    </ion-avatar>
+                    <ion-label>
+                        <span class="text-5">Friday, August 29 AT 9PM</span>
+                        <h2 style="font-weight: bold">Great Indian Musical Concert</h2>
+                        <h3>Mills Colony Grounds, Warangal, Telangana, India</h3>
+                    </ion-label>
+                </ion-item>
+            </div>
+        </span>
+
+        <span *ngIf="officials.length > 0">
+            <div class="text-4 mt-4">News</div>
+            <div class="">
+                <ion-item class="item">
+                    <ion-label><h3>Opinion: Twin dangers to internet</h3></ion-label>
+                </ion-item>
+                <ion-item class="item">
+                    <ion-label><h3>Online frauds: Cyberabad residents lose Rs 1.10 cr, 196 cases booked</h3></ion-label>
+                </ion-item>
+                <ion-item class="item">
+                    <ion-label><h3>More ‘eyes’ on tigers, poachers in Telangana</h3></ion-label>
+                </ion-item>
+                <ion-item class="item">
+                    <ion-label><h3>OTelangana set to release 11 new varieties of crops for farmers</h3></ion-label>
+                </ion-item>
+                <ion-item class="item">
+                    <ion-label><h3>No funds for Musi in three years by Centre: Revanth Reddy</h3></ion-label>
+                </ion-item>
+            </div>
+        </span>
+
+        <span *ngIf="schemes.length > 0">
+            <div class="text-4 mt-4" >Schemes</div>
+            <ion-item *ngFor="let item of schemes">
+            <div class="">
+                <ion-item class="item" (click)="goToSchemeDetails(item)">
+                    <ion-label><h3>{{item.name}}</h3></ion-label>
+                </ion-item>
+            </div>
+        </ion-item>
+        </span>
+    </div>
+
+
+    <!-- <div class="list" *ngIf="offices.length === 0">No Data Available</div>
+
+
+    <div class="text-3 mt-4">Book Appointments</div>
+
+    <ion-grid>
+        <ion-row>
+            <ion-col size-sm="3" size-md="3" size-lg="3">
+                <ion-card>
+                    <img src="assets/images/dentist.png" />
+                    <ion-card-content>
+                        <ion-card-title> Dentist </ion-card-title>
+                        <p>Teething Trobles? Schedule a dental checkup</p>
+                    </ion-card-content>
+                </ion-card>
+            </ion-col>
+
+            <ion-col size-sm="3" size-md="3" size-lg="3">
+                <ion-card>
+                    <img src="assets/images/gynecologist.png" />
+                    <ion-card-content>
+                        <ion-card-title> Gynecologist/Obstetrician </ion-card-title>
+                        <p>
+                            Explote fot women's health, pregnancy and infertility treatment
+                        </p>
+                    </ion-card-content>
+                </ion-card>
+            </ion-col>
+
+            <ion-col size-sm="3" size-md="3" size-lg="3">
+                <ion-card>
+                    <img src="assets/images/dietitian.png" />
+                    <ion-card-content>
+                        <ion-card-title> Dietitian/Nutrition </ion-card-title>
+                        <p>
+                            Get Guidance on eating right, weight management and sports
+                            nutrition
+                        </p>
+                    </ion-card-content>
+                </ion-card>
+            </ion-col>
+
+            <ion-col size-sm="3" size-md="3" size-lg="3">
+                <ion-card>
+                    <img src="assets/images/Physiotheraoist.png" />
+                    <ion-card-content>
+                        <ion-card-title> Physiotherapist </ion-card-title>
+                        <p>Pulled a muscle? Get it treated by a trained physiotherapist</p>
+                    </ion-card-content>
+                </ion-card>
+            </ion-col>
+            <ion-col size-sm="3" size-md="3" size-lg="3">
+                <ion-card>
+                    <img src="assets/images/GeneralSurgeon.png" />
+                    <ion-card-content>
+                        <ion-card-title> General Surgeon </ion-card-title>
+                        <p>Need to get operated? Find the right surgeon</p>
+                    </ion-card-content>
+                </ion-card>
+            </ion-col>
+
+            <ion-col size-sm="3" size-md="3" size-lg="3">
+                <ion-card>
+                    <img src="assets/images/Orthopedist.png" />
+                    <ion-card-content>
+                        <ion-card-title> Orthopedist </ion-card-title>
+                        <p>For Bone and Joints issues, spinal injuries and more</p>
+                    </ion-card-content>
+                </ion-card>
+            </ion-col>
+
+            <ion-col size-sm="3" size-md="3" size-lg="3">
+                <ion-card>
+                    <img src="assets/images/Generalphysician.png" />
+                    <ion-card-content>
+                        <ion-card-title> General physician </ion-card-title>
+                        <p>Find the right family doctor in your neighborhood</p>
+                    </ion-card-content>
+                </ion-card>
+            </ion-col>
+
+            <ion-col size-sm="3" size-md="3" size-lg="3">
+                <ion-card>
+                    <img src="assets/images/Pediatrician.png" />
+                    <ion-card-content>
+                        <ion-card-title> Pediatrician </ion-card-title>
+                        <p>Child Specialists and Doctors for Infant</p>
+                    </ion-card-content>
+                </ion-card>
+            </ion-col>
+
+            <ion-col size-sm="3" size-md="3" size-lg="3">
+                <ion-card>
+                    <img src="assets/images/gastroenterologist.png" />
+                    <ion-card-content>
+                        <ion-card-title> Gastroenterologist </ion-card-title>
+                        <p>
+                            Explore for issues related to digestive system, liver and pancreas
+                        </p>
+                    </ion-card-content>
+                </ion-card>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+
+    <div class="text-3 mt-4">Blogs & News</div>
+    <ion-card>
+        <ion-grid>
+            <ion-row>
+                <ion-col>
+                    <div>
+                        <img src="assets/images/gastroenterologist.png" />
+                        <ion-card-content>
+                            <ion-card-title> Gastroenterologist </ion-card-title>
+                            <p>
+                                Explore for issues related to digestive system, liver and
+                                pancreas
+                            </p>
+                        </ion-card-content>
+                    </div>
+                </ion-col>
+                <ion-col>
+                    <div>
+                        <ion-list>
+                            <ion-item>
+                                <ion-thumbnail slot="start">
+                                    <img src="./thumbnail.svg" />
+                                </ion-thumbnail>
+                                <ion-label>Lorem ipsum</ion-label>
+                            </ion-item>
+                            <ion-item>
+                                <ion-thumbnail slot="start">
+                                    <img src="./thumbnail.svg" />
+                                </ion-thumbnail>
+                                <ion-label>
+                                    <h3>Lorem ipsum</h3>
+                                    <p>dolor sit amet</p>
+                                </ion-label>
+                            </ion-item>
+                            <ion-item>
+                                <ion-thumbnail slot="start">
+                                    <img src="./thumbnail.svg" />
+                                </ion-thumbnail>
+                                <ion-label>
+                                    <h3>Lorem ipsum</h3>
+                                    <p>dolor sit amet</p>
+                                    <p>consectetur adipiscing elit. Duis ut urna neque.</p>
+                                </ion-label>
+                            </ion-item>
+                        </ion-list>
+                    </div>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </ion-card> -->
+    <div style="height: 400px; background-color: #999; margin-top: 60px">
+        <div class="content">
+            <div style="padding-top: 30px">All Rights Reserved 2021</div>
+        </div>
+    </div>
+</ion-content>

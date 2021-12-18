@@ -1,0 +1,221 @@
+<ion-app [dir]="rtlSide">
+  <ion-split-pane contentId="main-content" when="(max-width: 200px)">
+    <ion-menu contentId="main-content" type="overlay">
+      <ion-menu-toggle auto-hide="false">
+        <div class="profile_box" *ngIf="!isLoggedIn">
+          <h2>
+            <span class="name" (click)="login()">
+              {{ "login" | translate }}
+            </span>
+          </h2>
+        </div>
+        <div class="profile_box" *ngIf="isLoggedIn">
+          <h2>
+            <span  class="name">{{ name }}   <ion-icon  (click)="handleMenuClick('my profile')" size="small" class="edit" name="create-outline"></ion-icon></span>
+          
+          </h2>
+          <h4>{{ phone }}</h4>
+        </div>
+      </ion-menu-toggle>
+
+      <ion-content fullscreen>
+        <ion-list lines="none">
+          <!-- <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages">
+            <ion-item
+              mode="ios"
+              detail="false"
+              [routerDirection]="'root'"
+              [routerLink]="[p.url]"
+            >
+              <div class="item_inner d-flex">
+                <ion-icon slot="start" [class]="p.icon"></ion-icon>
+                <h2>{{ p.title | translate }}</h2>
+              </div>
+            </ion-item>
+          </ion-menu-toggle> -->
+          <ion-menu-toggle auto-hide="false">
+            <ion-item
+              mode="ios"
+              detail="false"
+              [routerDirection]="'root'"
+              [routerLink]="'/home'"
+            >
+              <div class="item_inner d-flex">
+                <ion-icon slot="start" class="zmdi zmdi-home"></ion-icon>
+                <h2>{{ "home" | translate }}</h2>
+              </div>
+            </ion-item>
+          </ion-menu-toggle>
+
+          <ion-menu-toggle auto-hide="false" *ngIf="role === 'user' || !isLoggedIn" (click)="handleMenuClick('Add your store')">
+            <ion-item
+              mode="ios"
+              detail="false">
+              <div class="item_inner d-flex">
+                <ion-icon slot="start" class="zmdi zmdi-store"></ion-icon>
+                <h2>Add your store</h2>
+              </div>
+            </ion-item>
+          </ion-menu-toggle>
+
+          <ion-menu-toggle auto-hide="false" *ngIf="role === 'owner' || isLoggedIn"  (click)="handleMenuClick('My store')">
+            <ion-item
+              mode="ios"
+              detail="false"
+            >
+              <div class="item_inner d-flex">
+                <ion-icon slot="start" class="zmdi zmdi-store"></ion-icon>
+                <h2>My store</h2>
+              </div>
+            </ion-item>
+          </ion-menu-toggle>
+
+          <ion-menu-toggle auto-hide="false">
+            <ion-item
+              mode="ios"
+              detail="false"
+              [routerDirection]="'root'"
+              [routerLink]="'/faq'"
+            >
+              <div class="item_inner d-flex">
+                <ion-icon slot="start" class="zmdi zmdi-comments"></ion-icon>
+                <h2>faq</h2>
+              </div>
+            </ion-item>
+          </ion-menu-toggle>
+
+          <ion-menu-toggle auto-hide="false">
+            <ion-item
+              mode="ios"
+              detail="false"
+              [routerDirection]="'root'"
+              [routerLink]="'/contact-us'"
+            >
+              <div class="item_inner d-flex">
+                <ion-icon slot="start" class="zmdi zmdi-email"></ion-icon>
+                <h2>Contact Us</h2>
+              </div>
+            </ion-item>
+          </ion-menu-toggle>
+
+          <ion-menu-toggle auto-hide="false">
+            <ion-item
+              mode="ios"
+              detail="false"
+              [routerDirection]="'root'"
+              [routerLink]="'/terms'"
+            >
+              <div class="item_inner d-flex">
+                <ion-icon slot="start" class="zmdi zmdi-file-text"></ion-icon>
+                <h2>Terms and Conditions</h2>
+              </div>
+            </ion-item>
+          </ion-menu-toggle>
+
+          <ion-menu-toggle auto-hide="false" *ngIf="isLoggedIn "   (click)="handleMenuClick('add locality')">
+            <ion-item
+              mode="ios"
+              detail="false"
+          
+            >
+              <div class="item_inner d-flex">
+                <ion-icon slot="start" class="zmdi zmdi-city"></ion-icon>
+                <h2>Add Locality</h2>
+              </div>
+            </ion-item>
+          </ion-menu-toggle>
+
+
+          <!-- <ion-menu-toggle auto-hide="false">
+            <ion-item
+              mode="ios"
+              detail="false"
+              [routerDirection]="'root'"
+              [routerLink]="'/add-location'"
+            >
+              <div class="item_inner d-flex">
+                <ion-icon slot="start" class="zmdi zmdi-file-text"></ion-icon>
+                <h2>Add location</h2>
+              </div>
+            </ion-item>
+          </ion-menu-toggle>
+
+          <ion-menu-toggle auto-hide="false">
+            <ion-item
+              mode="ios"
+              detail="false"
+              [routerDirection]="'root'"
+              [routerLink]="'/add-leader'"
+            >
+              <div class="item_inner d-flex">
+                <ion-icon slot="start" class="zmdi zmdi-file-text"></ion-icon>
+                <h2>Add leader</h2>
+              </div>
+            </ion-item>
+          </ion-menu-toggle> -->
+
+
+      
+          
+
+          <!-- <ion-menu-toggle auto-hide="false" *ngIf="isLoggedIn">
+            <ion-item
+              mode="ios"
+              detail="false"
+              [routerDirection]="'root'"
+              [routerLink]="'/my-profile'"
+            >
+              <div class="item_inner d-flex">
+                <ion-icon
+                  slot="start"
+                  name="zmdi zmdi"
+                  class="zmdi zmdi-assignment-account"
+                ></ion-icon>
+                <h2>{{ "my_profile" | translate }}</h2>
+              </div>
+            </ion-item>
+          </ion-menu-toggle> -->
+        
+          <!-- <ion-menu-toggle auto-hide="false" *ngIf="isLoggedIn">
+            <ion-item
+              mode="ios"
+              detail="false"
+              [routerDirection]="'root'"
+              [routerLink]="'/my-orders'"
+            >
+              <div class="item_inner d-flex">
+                <ion-icon
+                  slot="start"
+                  class="zmdi zmdi-shopping-cart"
+                ></ion-icon>
+                <h2>My Orders</h2>
+              </div>
+            </ion-item>
+          </ion-menu-toggle> -->
+          <ion-menu-toggle auto-hide="false">
+           
+
+          </ion-menu-toggle>
+          <ion-menu-toggle auto-hide="false" *ngIf="isLoggedIn">
+            <ion-item mode="ios" detail="false" (click)="logout()">
+              <div class="item_inner d-flex">
+                <ion-icon slot="start" class="zmdi zmdi-open-in-new"></ion-icon>
+                <h2>{{ "logout" | translate }}</h2>
+              </div>
+            </ion-item>
+          </ion-menu-toggle>
+          <!-- <div class="buy_this_app" *ngIf="config.showBuyPromt" (click)="buyAppAction()">
+                        <h2>
+                            <ion-icon class="zmdi zmdi-shopping-cart"></ion-icon>
+                            {{"buy_this_app" | translate}}
+                        </h2>
+                    </div> -->
+        </ion-list>
+      </ion-content>
+    </ion-menu>
+    <ion-router-outlet
+      id="main-content"
+      (activate)="onActivate()"
+    ></ion-router-outlet>
+  </ion-split-pane>
+</ion-app>
